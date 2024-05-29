@@ -7,6 +7,11 @@ use Ductong\XuongOop\Commons\Controller;
 class HomeController extends Controller
 {
     public function index() {
-        echo __CLASS__ . '@' . __FUNCTION__;
+
+        $name = 'DucTV44';
+
+        $this->renderViewClient('home', [
+            'name' => $name
+        ]);
     }
 }
