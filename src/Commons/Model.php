@@ -34,19 +34,33 @@ class Model
         return $this->queryBuilder
         ->select('*')
         ->from($this->tableName)
+        ->orderBy('id', 'desc')
         ->fetchAllAssociative();
     }
 
-    public function paginate($page = 1, $perPage = 10)
+    public function count()
+    {
+        return $this->queryBuilder
+        ->select("COUNT(*) as $this->tableName")
+        ->from($this->tableName)
+        ->fetchOne();
+    }
+
+    public function paginate($page = 1, $perPage = 5)
     {
         $offset = $perPage * ($page - 1);
 
-        return $this->queryBuilder
-            ->select('*')
-            ->from($this->tableName)
-            ->setFirstResult($offset)
-            ->setMaxResults($perPage)
-            ->fetchAllAssociative();
+        $data = $this->queryBuilder
+        ->select('*')
+        ->from($this->tableName)
+        ->setFirstResult($offset)
+        ->setMaxResults($perPage)
+        ->orderBy('id', 'desc')
+        ->fetchAllAssociative();
+
+        $totalPage = ceil($this->count() / $perPage);
+
+        return [$data, $totalPage];
     }
 
     public function findByID($id)
@@ -102,7 +116,7 @@ class Model
     }
 
     public function delete($id)
-    {
+    {        
         return $this->queryBuilder
             ->delete($this->tableName)
             ->where('id = ?')
