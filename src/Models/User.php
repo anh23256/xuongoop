@@ -6,5 +6,5 @@ use Ductong\XuongOop\Commons\Model;
 
 class User extends Model 
 {
-    
+    protected string $tableName = 'users';
 }
