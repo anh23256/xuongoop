@@ -9,11 +9,6 @@ use Ductong\XuongOop\Models\User;
 class HomeController extends Controller
 {
     public function index() {
-
-        $user = new User();
-
-        Helper::debug($user);
-
         $name = 'DucTV44';
 
         $this->renderViewClient('home', [
