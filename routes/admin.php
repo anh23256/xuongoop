@@ -7,8 +7,8 @@
 //      POST    -> USER/STORE   -> STORE    -> LƯU DỮ LIỆU TỪ FORM THÊM MỚI VÀO DB
 //      GET     -> USER/ID      -> SHOW ($id)     -> XEM CHI TIẾT
 //      GET     -> USER/ID/EDIT -> EDIT ($id)     -> HIỂN THỊ FORM CẬP NHẬT
-//      PUT     -> USER/ID      -> UPDATE ($id)   -> LƯU DỮ LIỆU TỪ FORM CẬP NHẬT VÀO DB
-//      DELETE  -> USER/ID      -> DELETE ($id)   -> XÓA BẢN GHI TRONG DB
+//      POST    -> USER/ID/UPDATE      -> UPDATE ($id)   -> LƯU DỮ LIỆU TỪ FORM CẬP NHẬT VÀO DB
+//      POST    -> USER/ID/DELETE      -> DELETE ($id)   -> XÓA BẢN GHI TRONG DB
 
 use Ductong\XuongOop\Controllers\Admin\UserController;
 
