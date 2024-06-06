@@ -71,7 +71,8 @@ class OrderController extends Controller
         }
 
         // Xóa dữ liệu trong Cart + CartDetail theo CartID - $_SESSION['cart_id']
-
+        $this->cartDetail->deleteByCartID($_SESSION['cart_id']);
+        $this->cart->delete($_SESSION['cart_id']);
         // Xóa trong SESSION
         unset($_SESSION[$key]);
 

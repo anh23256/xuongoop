@@ -49,17 +49,13 @@ class CartController extends Controller
             try {
 
                 $cart = $this->cart->findByUserID($_SESSION['user']['id']);
-
                 if (empty($cart)) {
                     $this->cart->insert([
                         'user_id' => $_SESSION['user']['id']
                     ]);
                 }
-
                 $cartID = $cart['id'] ?? $conn->lastInsertId();
-
                 $_SESSION['cart_id'] = $cartID;
-
                 $this->cartDetail->deleteByCartID($cartID);
 
                 foreach ($_SESSION[$key] as $productID => $item) {
@@ -72,12 +68,11 @@ class CartController extends Controller
 
                 // $conn->commit();
             } catch (\Throwable $th) {
-                // echo $th->getMessage();die;
+                echo $th->getMessage();die;
                 //throw $th;
                 // $conn->rollBack();
             }
         }
-
         header('Location: ' . url('cart/detail'));
         exit;
     }
