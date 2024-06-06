@@ -1,16 +1,28 @@
 <?php 
 
-namespace Ductong\XuongOop\Controllers\Client;
+namespace Admin\XuongOop\Controllers\Client;
 
-use Ductong\XuongOop\Commons\Controller;
+use Admin\XuongOop\Commons\Controller;
+use Admin\XuongOop\Commons\Helper;
+use Admin\XuongOop\Models\Product;
 
 class HomeController extends Controller
 {
+    private Product $product;
+
+    public function __construct()
+    {
+        $this->product = new Product();
+    }
+    
     public function index() {
-        $name = 'DucTV44';
+        $name = 'TV100';
+
+        $products = $this->product->all();
 
         $this->renderViewClient('home', [
-            'name' => $name
+            'name' => $name,
+            'products' => $products
         ]);
     }
 }

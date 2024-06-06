@@ -10,8 +10,9 @@
 //      POST    -> USER/ID/UPDATE       -> UPDATE ($id)   -> LƯU DỮ LIỆU TỪ FORM CẬP NHẬT VÀO DB
 //      GET     -> USER/ID/DELETE       -> DELETE ($id)   -> XÓA BẢN GHI TRONG DB
 
-use Ductong\XuongOop\Controllers\Admin\DashboardController;
-use Ductong\XuongOop\Controllers\Admin\UserController;
+use Admin\XuongOop\Controllers\Admin\DashboardController;
+use Admin\XuongOop\Controllers\Admin\ProductController;
+use Admin\XuongOop\Controllers\Admin\UserController;
 
 $router->before('GET|POST', '/admin/*.*', function() {
     if (! isset($_SESSION['user'])) {
@@ -34,5 +35,13 @@ $router->mount('/admin', function () use ($router) {
         $router->post('/{id}/update',   UserController::class . '@update');
         $router->get('/{id}/delete',    UserController::class . '@delete');
     });
-    
+    $router->mount('/products', function () use ($router) {
+        $router->get('/',             ProductController::class . '@index');
+        $router->get('/create',       ProductController::class . '@create'); // Show form thêm mới
+        $router->post('/store',        ProductController::class . '@store'); // Lưu mới vào DB
+        $router->get('/{id}/show',    ProductController::class . '@show');
+        $router->get('/{id}/edit',    ProductController::class . '@edit');
+        $router->post('/{id}/update',  ProductController::class . '@update');
+        $router->get('/{id}/delete',  ProductController::class . '@delete');
+    });
 });

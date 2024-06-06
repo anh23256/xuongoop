@@ -1,10 +1,10 @@
 <?php 
 
-namespace Ductong\XuongOop\Controllers\Client;
+namespace Admin\XuongOop\Controllers\Client;
 
-use Ductong\XuongOop\Commons\Controller;
-use Ductong\XuongOop\Commons\Helper;
-use Ductong\XuongOop\Models\User;
+use Admin\XuongOop\Commons\Controller;
+use Admin\XuongOop\Commons\Helper;
+use Admin\XuongOop\Models\User;
 
 class LoginController extends Controller
 {
@@ -36,7 +36,14 @@ class LoginController extends Controller
 
                 $_SESSION['user'] = $user;
 
-                header('Location: ' . url('admin/') );
+                unset($_SESSION['cart']);
+
+                if ($user['type'] == 'admin') {
+                    header('Location: ' . url('admin/') );
+                    exit;
+                }
+
+                header('Location: ' . url() );
                 exit;
             }
 
@@ -50,6 +57,7 @@ class LoginController extends Controller
     }
 
     public function logout() {
+        unset($_SESSION['cart-' . $_SESSION['user']['id'] ]);
         unset($_SESSION['user']);
 
         header('Location: ' . url() );

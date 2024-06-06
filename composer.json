@@ -1,19 +1,13 @@
 {
-    "name": "ductong/xuong-oop",
+    "name": "admin/xuong-oop",
     "autoload": {
         "psr-4": {
-            "Ductong\\XuongOop\\": "src/"
+            "Admin\\XuongOop\\": "src/"
         },
         "files": [
             "helper.php"
         ]
     },
-    "authors": [
-        {
-            "name": "Tống Văn Đức",
-            "email": "tongduc315@gmail.com"
-        }
-    ],
     "require": {
         "bramus/router": "~1.6",
         "eftec/bladeone": "^4.13",

@@ -1,7 +1,6 @@
 <?php
 
-namespace Ductong\XuongOop\Commons;
-
+namespace Admin\XuongOop\Commons;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\DriverManager;
 use Doctrine\DBAL\Query\QueryBuilder;
@@ -26,6 +25,11 @@ class Model
         $this->conn = DriverManager::getConnection($connectionParams);
 
         $this->queryBuilder = $this->conn->createQueryBuilder();
+    }
+
+    public function getConnection()
+    {
+        return $this->conn;
     }
 
     // CRUD

@@ -1,9 +1,9 @@
 <?php
 
-namespace Ductong\XuongOop\Controllers\Admin;
+namespace Admin\XuongOop\Controllers\Admin;
 
-use Ductong\XuongOop\Commons\Controller;
-use Ductong\XuongOop\Commons\Helper;
+use Admin\XuongOop\Commons\Controller;
+use Admin\XuongOop\Commons\Helper;
 
 class DashboardController extends Controller
 {

@@ -4,17 +4,16 @@ namespace Admin\XuongOop\Models;
 
 use Admin\XuongOop\Commons\Model;
 
-class User extends Model 
+class Cart extends Model 
 {
-    protected string $tableName = 'users';
+    protected string $tableName = 'carts';
 
-    public function findByEmail($email)
-    {
+    public function findByUserID($userID) {
         return $this->queryBuilder
             ->select('*')
             ->from($this->tableName)
-            ->where('email = ?')
-            ->setParameter(0, $email)
+            ->where('user_id = ?')
+            ->setParameter(0, $userID)
             ->fetchAssociative();
     }
 }
